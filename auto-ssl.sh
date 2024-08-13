@@ -50,11 +50,12 @@ install(){
 task_cmd(){
   if [ $USER != "root" ]; then
     HEADER=sudo
-  else
-    HEADER=""
   fi
   read -p "Please input your domain name:" DOMAIN_NAME
-  TASK_CMD="${HEADER} certbot renew --cert-name ${DOMAIN_NAME} --deploy-hook  \"/bin/bash $USER $(pwd)/action.sh\" --manual-auth-hook \"${AU_FILE} python txy add\" --manual-cleanup-hook \"${AU_FILE} python txy clean\""
+  if [ -f "action.sh" ]; then
+    DEPLAY_HOOK="--deploy-hook  \"/bin/bash $USER $(pwd)/action.sh\""
+  fi
+  TASK_CMD="${HEADER} certbot renew --cert-name ${DOMAIN_NAME} $DEPLAY_HOOK --manual-auth-hook \"${AU_FILE} python txy add\" --manual-cleanup-hook \"${AU_FILE} python txy clean\""
 }
 
 add_task(){
