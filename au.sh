@@ -29,6 +29,8 @@ HWY_TOKEN=""
 GODADDY_KEY=""
 GODADDY_TOKEN=""
 
+#根据自己的情况修改config.sh文件，可以避免修改本文件
+source "config.sh"
 ################ END ##############
 
 PATH=$(cd `dirname $0`; pwd)
