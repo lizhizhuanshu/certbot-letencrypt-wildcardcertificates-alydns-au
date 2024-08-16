@@ -120,8 +120,8 @@ add_task(){
 }
 
 export_certificate(){
-  cp "/etc/letsencrypt/live/$1/fullchain.pem" "$2/fullchain.pem"
-  cp "/etc/letsencrypt/live/$1/privkey.pem" "$2/privkey.pem"
+  cp "/etc/letsencrypt/live/$2/fullchain.pem" "$3/fullchain.pem"
+  cp "/etc/letsencrypt/live/$2/privkey.pem" "$3/privkey.pem"
 }
 
 renew(){
