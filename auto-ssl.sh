@@ -119,6 +119,11 @@ add_task(){
   fi
 }
 
+export_certificate(){
+  cp "/etc/letsencrypt/live/$1/fullchain.pem" "$2/fullchain.pem"
+  cp "/etc/letsencrypt/live/$1/privkey.pem" "$2/privkey.pem"
+}
+
 renew(){
   task_cmd
   eval $TASK_CMD
@@ -136,6 +141,9 @@ case $1 in
     ;;
   renew)
     renew $@
+    ;;
+  export)
+    export_certificate $@
     ;;
   *)
     echo "Usage: $0 {init|install|add_task}"
