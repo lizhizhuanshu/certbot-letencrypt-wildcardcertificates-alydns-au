@@ -98,7 +98,7 @@ task_cmd(){
   read -p "Please input your domain name:" DOMAIN_NAME
   ensureContext
   if [ -f "action.sh" ]; then
-    DEPLAY_HOOK="--deploy-hook  \"/bin/bash $USER $(pwd)/action.sh\""
+    DEPLAY_HOOK="--deploy-hook  \"sudo -u $USER bash $(pwd)/action.sh\""
   fi
   TASK_CMD="${HEADER} certbot renew --cert-name ${DOMAIN_NAME} $DEPLAY_HOOK --manual-auth-hook \"${AU_FILE} python ${PROVIDER_NAME} add\" --manual-cleanup-hook \"${AU_FILE} python ${PROVIDER_NAME} clean\""
 }
