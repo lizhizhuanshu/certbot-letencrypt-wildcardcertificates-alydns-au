@@ -29,11 +29,11 @@ HWY_TOKEN=""
 GODADDY_KEY=""
 GODADDY_TOKEN=""
 
+PATH=$(cd `dirname $0`; pwd)
+
 #根据自己的情况修改config.sh文件，可以避免修改本文件
 source "config.sh"
 ################ END ##############
-
-PATH=$(cd `dirname $0`; pwd)
 
 # 命令行参数
 # 第一个参数：使用什么语言环境
